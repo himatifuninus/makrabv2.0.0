@@ -46,7 +46,7 @@ const Home = () => {
             </div>
             <div className="w-full grid place-items-center md:grid md:place-items-start mt-7 md:mt-[-1rem]">
               <Link
-                to="/regist"
+                to="/daftar"
                 className="bg-[#3FE1A7] text-white px-3 py-2 rounded-md hover:bg-[#06d48c]"
               >
                 Daftar
