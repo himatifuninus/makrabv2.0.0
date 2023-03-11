@@ -1,6 +1,6 @@
 const Table = ({ children }) => {
   return (
-    <section className="container  mx-auto pt-24 p-6 font-mono">
+    <section className="container  mx-auto pt-24 p-6 font-inter">
       <div className="text-center max-w-md mx-auto md:w-full pb-5">
         <h1 className="text-3xl font-bold">PESERTA MAKRAB</h1>
       </div>

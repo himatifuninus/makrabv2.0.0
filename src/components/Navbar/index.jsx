@@ -50,7 +50,7 @@ export default function Navbar() {
               >
                 <button
                   onClick={() => setNavbarOpen(!navbarOpen)}
-                  className="ml-2 flex items-center text-[20px] font-medium"
+                  className="ml-2 flex items-center text-[20px] font-semibold"
                 >
                   Home
                 </button>
@@ -63,7 +63,7 @@ export default function Navbar() {
               >
                 <button
                   onClick={() => setNavbarOpen(!navbarOpen)}
-                  className="ml-2 flex items-center text-[20px] font-medium"
+                  className="ml-2 flex items-center text-[20px] font-semibold"
                 >
                   Daftar
                 </button>
@@ -76,7 +76,7 @@ export default function Navbar() {
               >
                 <button
                   onClick={() => setNavbarOpen(!navbarOpen)}
-                  className="ml-2 flex items-center text-[20px] font-medium"
+                  className="ml-2 flex items-center text-[20px] font-semibold"
                 >
                   Peserta
                   <i className="text-lg leading-lg"></i>
