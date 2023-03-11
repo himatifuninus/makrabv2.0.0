@@ -59,13 +59,13 @@ export default function Navbar() {
             <li className="">
               <Link
                 className="px-3 py-2 inline-block lg:flex items-center text-md uppercase font-bold leading-snug"
-                to="/regist"
+                to="/daftar"
               >
                 <button
                   onClick={() => setNavbarOpen(!navbarOpen)}
                   className="ml-2 flex items-center text-[20px] font-medium"
                 >
-                  Regist
+                  Daftar
                 </button>
               </Link>
             </li>

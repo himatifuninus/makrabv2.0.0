@@ -1,13 +1,13 @@
 import { Route, Routes } from "react-router-dom";
 import { lazy } from "react";
 const Home = lazy(() => import("../views/Home"));
-const Regist = lazy(() => import("../views/Regist"));
+const Daftar = lazy(() => import("../views/Daftar"));
 const Peserta = lazy(() => import("../views/Peserta"));
 const Router = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/regist" element={<Regist />} />
+      <Route path="/daftar" element={<Daftar />} />
       <Route path="/peserta" element={<Peserta />} />
     </Routes>
   );
