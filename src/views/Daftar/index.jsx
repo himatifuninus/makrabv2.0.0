@@ -46,89 +46,89 @@ const Daftar = () => {
         <div className="flex flex-wrap justify-center items-center lg:w-1/2">
           <div className="md:w-1/2 w-full flex justify-center items-center max-w-sm mx-auto">
             <div className="md:p-6 mb-12">
-              <h1 className="text-[#0014FF] flex justify-center py-12 text-5xl font-semibold">
+              <h1 className="text-[#0014FF] flex justify-center py-12 text-4xl font-semibold">
                 <span className="text-[#3FE1A7] px-2">MAKRAB</span> 2023
               </h1>
               <form onSubmit={savePesertaM}>
-                <label htmlFor="" className="text-lg md:text-lg">
+                <label htmlFor="" className="text-lg md:text-lg ml-5 md:ml-0">
                   Nama Lengkap
                 </label>
-                <div>
+                <div className="w-full grid place-items-center">
                   <input
                     value={nama}
                     onChange={(e) => setNama(e.target.value)}
                     type="text"
-                    className="bg-slate-200 p-1 mb-8 mt-2 pl-6 rounded-lg w-[350px] lg:w-full focus:outline-teal-500 focus:outline-8"
+                    className="bg-slate-200 p-1 mb-8 mt-2 pl-6 rounded-lg w-[80vw] lg:w-full focus:outline-teal-500 focus:outline-8"
                     placeholder="Masukan nama"
                     required
                   />
                 </div>
-                <label htmlFor="" className="text-lg md:text-lg">
+                <label htmlFor="" className="text-lg md:text-lg ml-5 md:ml-0">
                   NIM
                 </label>
-                <div>
+                <div className="w-full grid place-items-center">
                   <input
                     value={nim}
                     onChange={(e) => setNim(e.target.value)}
                     type="text"
-                    className="bg-slate-200 p-1 mb-8 mt-2 pl-6 rounded-lg w-[350px] lg:w-full focus:outline-teal-500 focus:outline-8"
+                    className="bg-slate-200 p-1 mb-8 mt-2 pl-6 rounded-lg w-[80vw] lg:w-full focus:outline-teal-500 focus:outline-8"
                     placeholder="Masukan NIM"
                     required
                   />
                 </div>
-                <label htmlFor="" className="text-lg md:text-lg">
+                <label htmlFor="" className="text-lg md:text-lg ml-5 md:ml-0">
                   Kelas
                 </label>
-                <div>
+                <div className="w-full grid place-items-center">
                   <input
                     value={kelas}
                     onChange={(e) => setKelas(e.target.value)}
                     type="text"
-                    className="bg-slate-200 p-1 mb-8 mt-2 pl-6 rounded-lg w-[350px] lg:w-full focus:outline-teal-500 focus:outline-8"
+                    className="bg-slate-200 p-1 mb-8 mt-2 pl-6 rounded-lg w-[80vw] lg:w-full focus:outline-teal-500 focus:outline-8"
                     placeholder="Masukan kelas"
                     required
                   />
                 </div>
-                <label htmlFor="" className="text-lg md:text-lg">
-                  Whats App
+                <label htmlFor="" className="text-lg md:text-lg ml-5 md:ml-0">
+                  Whatsapp
                 </label>
-                <div>
+                <div className="w-full grid place-items-center">
                   <input
                     value={whatsapp}
                     onChange={(e) => setWhatsapp(e.target.value)}
                     type="text"
-                    className="bg-slate-200 p-1 mb-8 mt-2 pl-6 rounded-lg w-[350px] lg:w-full focus:outline-teal-500 focus:outline-8"
+                    className="bg-slate-200 p-1 mb-8 mt-2 pl-6 rounded-lg w-[80vw] lg:w-full focus:outline-teal-500 focus:outline-8"
                     placeholder="Masukan nomor whatsapp"
                     required
                   />
                 </div>
-                <label htmlFor="" className="text-lg md:text-lg">
+                <label htmlFor="" className="text-lg md:text-lg ml-5 md:ml-0">
                   Angkatan
                 </label>
-                <div>
+                <div className="w-full grid place-items-center">
                   <input
                     value={angkatan}
                     onChange={(e) => setAngkatan(e.target.value)}
                     type="text"
-                    className="bg-slate-200 p-1 mb-8 mt-2 pl-6 rounded-lg w-[350px] lg:w-full focus:outline-teal-500 focus:outline-8"
+                    className="bg-slate-200 p-1 mb-8 mt-2 pl-6 rounded-lg w-[80vw] lg:w-full focus:outline-teal-500 focus:outline-8"
                     placeholder="Angkatan"
                     required
                   />
                 </div>
-                <label htmlFor="" className="text-lg md:text-lg">
+                <label htmlFor="" className="text-lg md:text-lg ml-5 md:ml-0">
                   Riwayat Penyakit
                 </label>
-                <div>
+                <div className="w-full grid place-items-center">
                   <input
                     value={penyakit}
                     onChange={(e) => setPenyakit(e.target.value)}
                     type="text"
-                    className="bg-slate-200 p-1 mb-8 mt-2 pl-6 rounded-lg w-[350px] lg:w-full focus:outline-teal-500 focus:outline-8"
+                    className="bg-slate-200 p-1 mb-8 mt-2 pl-6 rounded-lg w-[80vw] lg:w-full focus:outline-teal-500 focus:outline-8"
                     placeholder="Jika tidak punya riwayat penyakit isi -  "
                     required
                   />
                 </div>
-                <div className="py-4  max-w-xs">
+                <div className="py-4  max-w-xs  w-[80vw]">
                   <input
                     type="checkbox"
                     checked={isChecked}
