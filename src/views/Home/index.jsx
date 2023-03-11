@@ -41,7 +41,7 @@ const Home = () => {
                 Himpunan, Dalam makrab kali ini HIMATIF mengambil tema "PURSUE
                 CHANGE FROM SOLIDARITY" yang berarti Mengejar perubahan dari
                 solidaritas dengan cara membangun kekeluargaan dan sikap
-                solidaritas
+                solidaritas.
               </p>
             </div>
             <div className="w-full grid place-items-center md:grid md:place-items-start mt-7 md:mt-[-1rem]">
