@@ -33,7 +33,9 @@ const Peserta = () => {
               </td>
               <td className="px-4 py-3 border">
                 <div className="flex items-center text-sm">
-                  <p className="font-semibold text-black">{el.nama}</p>
+                  <p className="font-semibold capitalize text-black">
+                    {el.nama}
+                  </p>
                 </div>
               </td>
               <td className="px-4 py-3 border">
@@ -43,12 +45,14 @@ const Peserta = () => {
               </td>
               <td className="px-4 py-3 border">
                 <div className="flex items-center text-sm">
-                  <p className="font-semibold text-black">{el.kelas}</p>
+                  <p className="font-semibold capitalize text-black">
+                    {el.kelas}
+                  </p>
                 </div>
               </td>
               <td className="px-4 py-3 border">
                 <div className="flex items-center text-sm">
-                  <p className="font-semibold text-black">{el.angkatan}</p>
+                  <p className="font-semibold  text-black">{el.angkatan}</p>
                 </div>
               </td>
               <td className="px-4 py-3 border">
