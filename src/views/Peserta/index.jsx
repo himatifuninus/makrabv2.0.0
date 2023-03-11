@@ -25,7 +25,7 @@ const Peserta = () => {
         {peserta_makrab &&
           peserta_makrab.length > 0 &&
           peserta_makrab.map((el, i) => (
-            <tr key={i} className="text-gray-700">
+            <tr key={i} className="text-gray-700 ">
               <td className="px-4 py-3 border">
                 <div className="flex items-center text-sm">
                   <p className="font-semibold text-black">{i + 1}</p>
