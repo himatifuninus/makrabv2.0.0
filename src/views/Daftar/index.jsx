@@ -124,7 +124,7 @@ const Daftar = () => {
                     onChange={(e) => setPenyakit(e.target.value)}
                     type="text"
                     className="bg-slate-200 p-1 mb-8 mt-2 pl-6 rounded-lg w-[80vw] lg:w-full focus:outline-teal-500 focus:outline-8"
-                    placeholder="Jika tidak punya riwayat penyakit isi -  "
+                    placeholder="isi - jika tidak ada riwayat penyakit"
                     required
                   />
                 </div>
