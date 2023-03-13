@@ -58,11 +58,19 @@ const Peserta = () => {
               <td className="px-4 py-3 border">
                 <div className="flex items-center text-sm">
                   <p className="font-semibold text-black">
-                    {el.pembayaran == "lunas"
-                      ? "Lunas"
-                      : el.pembayaran == "belum"
-                      ? "Belum Lunas"
-                      : "Belum Bayar"}
+                    {el.pembayaran == "lunas" ? (
+                      <span className="text-green-400 bg-green-50 font-medium p-2 w-auto h-auto rounded-sm">
+                        Lunas
+                      </span>
+                    ) : el.pembayaran == "belum" ? (
+                      <span className="text-yellow-400 bg-yellow-50 font-medium p-2 w-auto h-auto rounded-sm">
+                        Belum Lunas
+                      </span>
+                    ) : (
+                      <span className="text-red-400 bg-red-50 font-medium p-2 w-auto h-auto rounded-sm">
+                        Belum Bayar
+                      </span>
+                    )}
                   </p>
                 </div>
               </td>
