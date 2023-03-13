@@ -1,158 +1,165 @@
 import { supabase } from "../../supabase";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import image from "../../assets/logo-makrab.png";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import Input from "../../components/Inputs";
+import Checkbox from "../../components/Inputs/Checkbox";
+import { z } from "zod";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
 const Daftar = () => {
-  const [nama, setNama] = useState("");
-  const [nim, setNim] = useState("");
-  const [kelas, setKelas] = useState("");
-  const [whatsapp, setWhatsapp] = useState("");
-  const [angkatan, setAngkatan] = useState("");
-  const [penyakit, setPenyakit] = useState("");
-  const [isChecked, setIsChecked] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const validationSchema = z.object({
+    nama: z.string().min(1, { message: "Nama lengkap harus diisi" }),
+    nim: z
+      .string()
+      .min(13, { message: "Nim setidak nya harus ada 14 digit" })
+      .max(14, { message: "Maksimal karakter nim adalah 14" })
+      .includes("4103700", {
+        message: "Bukan nim informatika",
+      }),
+    kelas: z.string().min(1, { message: "Kelas harus di isi" }),
+    whatsapp: z
+      .string()
+      .min(10, { message: "Nomor Whatsapp setidaknya harus 10 karakter" })
+      .max(13, { message: "Nomor whatsapp tidak bisa lebih dari 13" }),
+    angkatan: z
+      .string()
+      .min(1, { message: "Angkatan harus diisi" })
+      .max(4, { message: "Maksimal 4 karakter" }),
+    penyakit: z.string().optional(),
+    term: z.literal(true, {
+      errorMap: () => ({ message: "Terms dan Condition Harus disetujui" }),
+    }),
+  });
+
+  const {
+    control,
+    formState: { isValid },
+    handleSubmit,
+  } = useForm({
+    mode: "all",
+    resolver: zodResolver(validationSchema),
+    defaultValues: {
+      nama: "",
+      nim: "",
+      kelas: "",
+      whatsapp: "",
+      angkatan: "",
+      penyakit: "",
+      term: false,
+    },
+  });
+
+  const MySwal = withReactContent(Swal);
 
   const navigate = useNavigate();
 
-  const savePesertaM = async (e) => {
-    e.preventDefault();
+  const onSubmit = handleSubmit(async (data) => {
+    const { nama, nim, kelas, whatsapp, angkatan, penyakit } = data;
+    const payload = { nama, nim, kelas, whatsapp, angkatan, penyakit };
     try {
-      const { error } = await supabase.from("user").insert([
-        {
-          nama: nama,
-          nim: nim,
-          kelas: kelas,
-          wa: whatsapp,
-          angkatan: angkatan,
-          penyakit: penyakit,
-        },
-      ]);
-      if (error) throw error;
-
-      navigate("/peserta");
-    } catch (error) {
-      console.log(error);
+      setLoading(true);
+      const { error } = await supabase.from("user").insert({ ...payload });
+      if (error) {
+        setLoading(false);
+        MySwal.fire({
+          title: "Telah terjadi error",
+          text: error,
+          icon: "error",
+        });
+      }
+      setLoading(false);
+      MySwal.fire({
+        title: "Selamat Anda Berhasil terdaftar!",
+        text: "Kini anda telah terdaftar di Makrab 2023",
+        icon: "success",
+      });
+      if (!error) {
+        navigate("/peserta");
+      }
+    } catch (err) {
+      throw err;
     }
-  };
+  });
 
   document.title = "Makrab | Register";
 
   return (
-    <div className="container mx-auto my-16">
-      <div className="flex justify-center items-center">
-        <div className="hidden pl-28 items-center lg:block lg:w-1/2">
-          <img src={image} alt="" className="absolute top-[25vh]" />
-        </div>
+    <div className="flex justify-between items-center w-full h-auto px-8">
+      <div className="hidden md:flex w-1/2 items-center justify-center">
+        <img src={image} />
+      </div>
+      <div className="w-full md:w-1/2 h-full">
+        <h1 className="text-[#0014FF] font-semibold text-3xl text-center">
+          <span className="text-[#3FE1A7] px-2">MAKRAB</span> 2023
+        </h1>
 
-        <div className="flex flex-wrap justify-center items-center lg:w-1/2">
-          <div className="md:w-1/2 w-full flex justify-center items-center max-w-sm mx-auto">
-            <div className="md:p-6 mb-12">
-              <h1 className="text-[#0014FF] flex justify-center py-12 text-4xl font-semibold">
-                <span className="text-[#3FE1A7] px-2">MAKRAB</span> 2023
-              </h1>
-              <form onSubmit={savePesertaM}>
-                <label htmlFor="" className="text-lg md:text-lg ml-5 md:ml-0">
-                  Nama Lengkap
-                </label>
-                <div className="w-full grid place-items-center">
-                  <input
-                    value={nama}
-                    onChange={(e) => setNama(e.target.value)}
-                    type="text"
-                    className="bg-slate-200 p-1 mb-8 mt-2 pl-6 rounded-lg w-[80vw] lg:w-full focus:outline-teal-500 focus:outline-8"
-                    placeholder="Masukan nama"
-                    required
-                  />
-                </div>
-                <label htmlFor="" className="text-lg md:text-lg ml-5 md:ml-0">
-                  NIM
-                </label>
-                <div className="w-full grid place-items-center">
-                  <input
-                    value={nim}
-                    onChange={(e) => setNim(e.target.value)}
-                    type="text"
-                    className="bg-slate-200 p-1 mb-8 mt-2 pl-6 rounded-lg w-[80vw] lg:w-full focus:outline-teal-500 focus:outline-8"
-                    placeholder="Masukan NIM"
-                    required
-                  />
-                </div>
-                <label htmlFor="" className="text-lg md:text-lg ml-5 md:ml-0">
-                  Kelas
-                </label>
-                <div className="w-full grid place-items-center">
-                  <input
-                    value={kelas}
-                    onChange={(e) => setKelas(e.target.value)}
-                    type="text"
-                    className="bg-slate-200 p-1 mb-8 mt-2 pl-6 rounded-lg w-[80vw] lg:w-full focus:outline-teal-500 focus:outline-8"
-                    placeholder="Masukan kelas"
-                    required
-                  />
-                </div>
-                <label htmlFor="" className="text-lg md:text-lg ml-5 md:ml-0">
-                  Whatsapp
-                </label>
-                <div className="w-full grid place-items-center">
-                  <input
-                    value={whatsapp}
-                    onChange={(e) => setWhatsapp(e.target.value)}
-                    type="text"
-                    className="bg-slate-200 p-1 mb-8 mt-2 pl-6 rounded-lg w-[80vw] lg:w-full focus:outline-teal-500 focus:outline-8"
-                    placeholder="Masukan nomor whatsapp"
-                    required
-                  />
-                </div>
-                <label htmlFor="" className="text-lg md:text-lg ml-5 md:ml-0">
-                  Angkatan
-                </label>
-                <div className="w-full grid place-items-center">
-                  <input
-                    value={angkatan}
-                    onChange={(e) => setAngkatan(e.target.value)}
-                    type="text"
-                    className="bg-slate-200 p-1 mb-8 mt-2 pl-6 rounded-lg w-[80vw] lg:w-full focus:outline-teal-500 focus:outline-8"
-                    placeholder="Angkatan"
-                    required
-                  />
-                </div>
-                <label htmlFor="" className="text-lg md:text-lg ml-5 md:ml-0">
-                  Riwayat Penyakit
-                </label>
-                <div className="w-full grid place-items-center">
-                  <input
-                    value={penyakit}
-                    onChange={(e) => setPenyakit(e.target.value)}
-                    type="text"
-                    className="bg-slate-200 p-1 mb-8 mt-2 pl-6 rounded-lg w-[80vw] lg:w-full focus:outline-teal-500 focus:outline-8"
-                    placeholder="isi - jika tidak ada riwayat penyakit"
-                    required
-                  />
-                </div>
-                <div className="py-4  max-w-xs  w-[80vw]">
-                  <input
-                    type="checkbox"
-                    checked={isChecked}
-                    onChange={() => setIsChecked(!isChecked)}
-                  />
-                  <label htmlFor="" className="p-2">
-                    Dengan mendaftar makrab berarti saya menyetujui ketentuan
-                    dan tata tertib yang telah ditentukan
-                  </label>
-                </div>
-                <div className="flex justify-center">
-                  <button
-                    id="btn"
-                    className="bg-[#313ED1] p-2 text-white rounded-lg mt-6 hover:bg-[#060e63]"
-                    disabled={!isChecked}
-                    hidden={!isChecked}
-                  >
-                    Daftar
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
+        <form onSubmit={onSubmit} className="flex flex-col gap-y-3 w-full">
+          <Input
+            control={control}
+            type="text"
+            label="Nama"
+            required
+            name="nama"
+            placeholder="Masukan Nama Anda"
+          />
+
+          <Input
+            control={control}
+            type="text"
+            label="Nim"
+            required
+            name="nim"
+            placeholder="Masukan Nim Anda"
+          />
+
+          <Input
+            control={control}
+            type="text"
+            label="Kelas"
+            required
+            name="kelas"
+            placeholder="Masukan Kelas Anda"
+          />
+
+          <Input
+            control={control}
+            type="number"
+            label="No Whatsapp"
+            required
+            name="whatsapp"
+            placeholder="Masukan No Whatsapp Anda"
+          />
+
+          <Input
+            control={control}
+            type="number"
+            label="angkatan"
+            required
+            name="angkatan"
+            placeholder="Masukan Angkatan Anda"
+          />
+
+          <Input
+            control={control}
+            type="text"
+            placeholder="isi - jika tidak ada riwayat penyakit"
+            name="penyakit"
+            label="Riwayat Penyakit"
+          />
+          <Checkbox name="term" control={control} />
+
+          <button
+            id="btn"
+            className="bg-[#313ED1] p-2 text-white rounded-lg mt-6 hover:bg-[#060e63] disabled:bg-gray-200 w-full"
+            disabled={!isValid}
+          >
+            {loading ? "Sedang Memproses..." : "Daftar"}
+          </button>
+        </form>
       </div>
     </div>
   );
