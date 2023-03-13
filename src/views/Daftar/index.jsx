@@ -60,26 +60,29 @@ const Daftar = () => {
 
   const onSubmit = handleSubmit(async (data) => {
     const { nama, nim, kelas, whatsapp, angkatan, penyakit } = data;
-    const payload = { nama, nim, kelas, whatsapp, angkatan, penyakit };
+    const payload = { nama, nim, kelas, angkatan, penyakit };
     try {
       setLoading(true);
-      const { error } = await supabase.from("user").insert({ ...payload });
+      const { error } = await supabase
+        .from("user")
+        .insert({ ...payload, wa: whatsapp });
       if (error) {
         setLoading(false);
         MySwal.fire({
           title: "Telah terjadi error",
-          text: error,
+          text: error.message,
           icon: "error",
         });
       }
       setLoading(false);
-      MySwal.fire({
-        title: "Selamat Anda Berhasil terdaftar!",
-        text: "Kini anda telah terdaftar di Makrab 2023",
-        icon: "success",
-      });
+
       if (!error) {
         navigate("/peserta");
+        MySwal.fire({
+          title: "Selamat Anda Berhasil terdaftar!",
+          text: "Kini anda telah terdaftar di Makrab 2023",
+          icon: "success",
+        });
       }
     } catch (err) {
       throw err;
