@@ -12,7 +12,7 @@ export default function Navbar() {
   }, []);
   return (
     <nav
-      className="fixed top-0 left-0 right-0 z-50 flex flex-wrap items-center justify-between md:px-12 lg:px-24 py-4 bg-white backdrop-blur-lg shadow-md"
+      className="sticky top-0 left-0 right-0 z-50 flex flex-wrap items-center justify-between md:px-12 lg:px-24 py-4 bg-white backdrop-blur-lg shadow-md"
       data-aos="fade-down"
       data-aos-duration="1000"
       data-aos-once="true"
