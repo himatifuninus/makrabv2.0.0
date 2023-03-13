@@ -7,7 +7,7 @@ const Input = ({ variant = "lg", ...props }) => {
   } = useController(props);
   return (
     <section className="flex flex-col gap-y-1">
-      <label htmlFor={props.name} className="text-lg md:text-lg ml-5 md:ml-0">
+      <label htmlFor={props.name} className="text-base text-start">
         {props.label}
         {props.required && <span className="text-red-600">*</span>}
       </label>

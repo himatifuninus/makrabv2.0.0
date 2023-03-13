@@ -8,6 +8,7 @@ import Checkbox from "../../components/Inputs/Checkbox";
 import { z } from "zod";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import { useState } from "react";
 
 const Daftar = () => {
   const [loading, setLoading] = useState(false);
@@ -137,7 +138,7 @@ const Daftar = () => {
           <Input
             control={control}
             type="number"
-            label="angkatan"
+            label="Angkatan"
             required
             name="angkatan"
             placeholder="Masukan Angkatan Anda"
