@@ -66,6 +66,7 @@ const Daftar = () => {
       const { error } = await supabase
         .from("user")
         .insert({ ...payload, wa: whatsapp });
+
       if (error) {
         setLoading(false);
         MySwal.fire({
