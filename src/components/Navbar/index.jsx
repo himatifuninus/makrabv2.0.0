@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -21,11 +21,11 @@ export default function Navbar() {
         <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
           <div className="flex items-center w-[50px] h-[50px]">
             <img src="/logo-himatif.png" alt="" className="object-cover" />
-            <Link to="/" className="">
+            <a href="/" className="">
               <button className="pl-2 text-2xl font-semibold text-[#020181]">
                 Himatif
               </button>
-            </Link>
+            </a>
           </div>
 
           <button
@@ -44,9 +44,9 @@ export default function Navbar() {
         >
           <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
             <li className="">
-              <Link
+              <a
                 className="px-3 py-2 inline-block lg:flex items-center text-md uppercase font-bold leading-snug"
-                to="/"
+                href="/"
               >
                 <button
                   onClick={() => setNavbarOpen(!navbarOpen)}
@@ -54,12 +54,12 @@ export default function Navbar() {
                 >
                   Home
                 </button>
-              </Link>
+              </a>
             </li>
             <li className="">
-              <Link
+              <a
                 className="px-3 py-2 inline-block lg:flex items-center text-md uppercase font-bold leading-snug"
-                to="/daftar"
+                href="/daftar"
               >
                 <button
                   onClick={() => setNavbarOpen(!navbarOpen)}
@@ -67,12 +67,12 @@ export default function Navbar() {
                 >
                   Daftar
                 </button>
-              </Link>
+              </a>
             </li>
             <li className="">
-              <Link
+              <a
                 className="px-3 py-2 inline-block lg:flex items-center text-md uppercase font-bold leading-snug"
-                to="/peserta"
+                href="/peserta"
               >
                 <button
                   onClick={() => setNavbarOpen(!navbarOpen)}
@@ -81,7 +81,7 @@ export default function Navbar() {
                   Peserta
                   <i className="text-lg leading-lg"></i>
                 </button>
-              </Link>
+              </a>
             </li>
           </ul>
         </div>

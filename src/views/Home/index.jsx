@@ -1,18 +1,16 @@
-import { Link } from "react-router-dom";
 import background from "../../assets/background.jpg";
 
 const Home = () => {
   document.title = "Makrab | Home";
-
   return (
-    <div className="container mx-auto my-24">
+    <div className="flex mx-auto my-24 w-full px-8">
       <div className="flex flex-wrap items-center">
         <div className="w-full pt-5">
           <h1
             className="text-[#3FE1A7] text-center text-[2.5rem] font-semibold"
             data-aos="zoom-in"
             data-set-once="true"
-            data-aos-duration="500"
+            data-aos-duration="300"
           >
             MAKRAB <span className="text-[#0014FF]">2023</span>
           </h1>
@@ -24,7 +22,7 @@ const Home = () => {
               className="object-cover md:w-[30rem] w-[17rem]"
               data-aos="fade-left"
               data-set-once="true"
-              data-aos-duration="700"
+              data-aos-duration="500"
             />
           </div>
           <div className="grid place-items-center w-full">
@@ -44,13 +42,18 @@ const Home = () => {
                 solidaritas.
               </p>
             </div>
-            <div className="w-full grid place-items-center md:grid md:place-items-start mt-7 md:mt-[-1rem]">
-              <Link
-                to="/daftar"
+            <div
+              data-aos="zoom-in"
+              data-set-once="true"
+              data-aos-duration="300"
+              className="w-full grid place-items-center md:grid md:place-items-start mt-7 md:mt-[-1rem]"
+            >
+              <a
+                href="/daftar"
                 className="bg-[#3FE1A7] text-white px-3 py-2 rounded-md hover:bg-[#06d48c]"
               >
                 Daftar
-              </Link>
+              </a>
             </div>
           </div>
         </div>
