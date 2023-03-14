@@ -1,5 +1,4 @@
 import { supabase } from "../../supabase";
-import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Input from "../../components/Inputs";
@@ -77,7 +76,7 @@ const FormModules = () => {
       setLoading(false);
 
       if (!error) {
-        navigate("/peserta");
+        location.href("/peserta");
         MySwal.fire({
           title: "Selamat Anda Berhasil terdaftar!",
           text: "Kini anda telah terdaftar di Makrab 2023",
