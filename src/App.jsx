@@ -1,25 +1,26 @@
-import { Suspense, lazy } from "react";
+import { lazy, Suspense } from "react";
+import { routes } from "./router";
+import { RouterProvider } from "react-router";
+import Loading from "./components/Loading";
 import { ErrorBoundary } from "react-error-boundary";
-import Router from "./router";
+import Error from "./components/Error";
+
 const MainLayout = lazy(() => import("./layouts/MainLayout"));
 const ContentLayout = lazy(() => import("./layouts/ContentLayout"));
-const Error = lazy(() => import("./components/Error"));
-const Loading = lazy(() => import("./components/Loading"));
 const Navbar = lazy(() => import("./components/Navbar"));
+
 const App = () => {
   return (
-    <MainLayout>
+    <ErrorBoundary fallback={<Error />}>
       <Suspense fallback={<Loading />}>
-        <Navbar />
-        <ErrorBoundary fallback={<Error />}>
-          <Suspense fallback={<Loading />}>
-            <ContentLayout>
-              <Router />
-            </ContentLayout>
-          </Suspense>
-        </ErrorBoundary>
+        <MainLayout>
+          <Navbar />
+          <ContentLayout>
+            <RouterProvider fallbackElement={<Loading />} router={routes} />
+          </ContentLayout>
+        </MainLayout>
       </Suspense>
-    </MainLayout>
+    </ErrorBoundary>
   );
 };
 
