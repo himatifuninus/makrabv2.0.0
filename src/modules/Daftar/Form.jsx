@@ -54,8 +54,6 @@ const FormModules = () => {
 
   const MySwal = withReactContent(Swal);
 
-  const navigate = useNavigate();
-
   const onSubmit = handleSubmit(async (data) => {
     const { nama, nim, kelas, whatsapp, angkatan, penyakit } = data;
     const payload = { nama, nim, kelas, angkatan, penyakit };
