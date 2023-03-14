@@ -4,10 +4,6 @@ const Table = lazy(() => import("../../components/Table"));
 const Peserta = () => {
   const [peserta_makrab, setPesertaMakrab] = useState([]);
 
-  useEffect(() => {
-    getPeserta_makrab();
-  }, []);
-
   const getPeserta_makrab = async () => {
     try {
       const res = await supabase.from("user").select();
@@ -16,6 +12,10 @@ const Peserta = () => {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    getPeserta_makrab();
+  }, []);
 
   document.title = "Makrab | Peserta";
 
