@@ -15,7 +15,6 @@ const Peserta = () => {
 
   useEffect(() => {
     getPeserta_makrab();
-    location.reload();
   }, []);
 
   document.title = "Makrab | Peserta";
