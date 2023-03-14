@@ -7,7 +7,6 @@ import { z } from "zod";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { useState } from "react";
-
 const FormModules = () => {
   const [loading, setLoading] = useState(false);
   const validationSchema = z.object({
@@ -59,9 +58,10 @@ const FormModules = () => {
     const payload = { nama, nim, kelas, angkatan, penyakit };
     try {
       setLoading(true);
-      const { error } = await supabase
-        .from("user")
-        .insert({ ...payload, wa: whatsapp });
+      const error = false;
+      // const { error } = await supabase
+      //   .from("user")
+      //   .insert({ ...payload, wa: whatsapp });
 
       if (error) {
         setLoading(false);
@@ -73,8 +73,9 @@ const FormModules = () => {
       }
       setLoading(false);
 
+      window.location.replace("/peserta");
+
       if (!error) {
-        location.href("/peserta");
         MySwal.fire({
           title: "Selamat Anda Berhasil terdaftar!",
           text: "Kini anda telah terdaftar di Makrab 2023",

@@ -3,6 +3,7 @@ import image from "../../assets/logo-makrab.png";
 import Loading from "../../components/Loading";
 import Error from "../../components/Error";
 import { ErrorBoundary } from "react-error-boundary";
+import { Router } from "react-router-dom";
 
 const FormModules = lazy(() => import("../../modules/Daftar/Form"));
 
