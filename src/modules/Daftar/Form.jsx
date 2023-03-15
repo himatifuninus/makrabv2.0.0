@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { useState } from "react";
 import Select from "../../components/Inputs/Select";
+
 const FormModules = () => {
   const [loading, setLoading] = useState(false);
   const validationSchema = z.object({
@@ -112,7 +113,6 @@ const FormModules = () => {
         label="Kelas"
         required
         name="kelas"
-        placeholder="Masukan Kelas Anda"
         options={[
           {
             value: "A1",
@@ -155,7 +155,6 @@ const FormModules = () => {
         label="Angkatan"
         required
         name="angkatan"
-        placeholder="Masukan Angkatan Anda"
         options={[
           {
             label: "2020",
