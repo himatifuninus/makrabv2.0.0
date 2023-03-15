@@ -58,10 +58,9 @@ const FormModules = () => {
     const payload = { nama, nim, kelas, angkatan, penyakit };
     try {
       setLoading(true);
-      const error = false;
-      // const { error } = await supabase
-      //   .from("user")
-      //   .insert({ ...payload, wa: whatsapp });
+      const { error } = await supabase
+        .from("user")
+        .insert({ ...payload, wa: whatsapp });
 
       if (error) {
         setLoading(false);
