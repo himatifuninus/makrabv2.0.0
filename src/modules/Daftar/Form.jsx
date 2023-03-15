@@ -7,6 +7,7 @@ import { z } from "zod";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { useState } from "react";
+import Select from "../../components/Inputs/Select";
 const FormModules = () => {
   const [loading, setLoading] = useState(false);
   const validationSchema = z.object({
@@ -43,9 +44,9 @@ const FormModules = () => {
     defaultValues: {
       nama: "",
       nim: "",
-      kelas: "",
+      kelas: "A1",
       whatsapp: "",
-      angkatan: "",
+      angkatan: "2020",
       penyakit: "",
       term: false,
     },
@@ -105,13 +106,39 @@ const FormModules = () => {
         placeholder="Masukan Nim Anda"
       />
 
-      <Input
+      <Select
         control={control}
         type="text"
         label="Kelas"
         required
         name="kelas"
         placeholder="Masukan Kelas Anda"
+        options={[
+          {
+            value: "A1",
+            label: "A1",
+          },
+          {
+            value: "A2",
+            label: "A2",
+          },
+          {
+            value: "A3",
+            label: "A3",
+          },
+          {
+            value: "A4",
+            label: "A4",
+          },
+          {
+            value: "A5",
+            label: "A5",
+          },
+          {
+            value: "A6",
+            label: "A6",
+          },
+        ]}
       />
 
       <Input
@@ -123,13 +150,26 @@ const FormModules = () => {
         placeholder="Masukan No Whatsapp Anda"
       />
 
-      <Input
+      <Select
         control={control}
-        type="number"
         label="Angkatan"
         required
         name="angkatan"
         placeholder="Masukan Angkatan Anda"
+        options={[
+          {
+            label: "2020",
+            value: "2020",
+          },
+          {
+            label: "2021",
+            value: "2021",
+          },
+          {
+            label: "2022",
+            value: "2022",
+          },
+        ]}
       />
 
       <Input
