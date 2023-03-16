@@ -138,6 +138,14 @@ const FormModules = () => {
             value: "A6",
             label: "A6",
           },
+          {
+            value: "B1",
+            label: "B1",
+          },
+          {
+            value: "B2",
+            label: "B2",
+          },
         ]}
       />
 
